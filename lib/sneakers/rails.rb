@@ -1,5 +1,18 @@
+require "sneakers/rails/sneakers_override"
+require "sneakers/rails/railtie"
+
 module Sneakers
   module Rails
-    # Your code goes here...
+    def self.workers
+      @workers ||= []
+    end
+
+    def self.add_worker(worker_constant_name)
+      workers << worker_constant_name
+    end
+
+    def self.worker_names
+      workers.join(",")
+    end
   end
 end
