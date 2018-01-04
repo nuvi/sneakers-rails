@@ -1,4 +1,5 @@
 require "sneakers/rails/sneakers_override"
+require "sneakers/rails/railtie"
 
 module Sneakers
   module Rails
@@ -7,7 +8,7 @@ module Sneakers
     end
 
     def self.add_worker(worker_constant_name)
-      @workers << worker_constant_name
+      workers << worker_constant_name
     end
 
     def self.worker_names
