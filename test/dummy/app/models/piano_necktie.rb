@@ -1,0 +1,2 @@
+class PianoNecktie
+end
