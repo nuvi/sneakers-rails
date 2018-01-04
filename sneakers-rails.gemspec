@@ -1,29 +1,23 @@
-# coding: utf-8
-lib = File.expand_path("../lib", __FILE__)
-$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+$:.push File.expand_path("../lib", __FILE__)
+
+# Maintain your gem's version:
 require "sneakers/rails/version"
 
-Gem::Specification.new do |spec|
-  spec.name          = "sneakers-rails"
-  spec.version       = Sneakers::Rails::VERSION
-  spec.authors       = ["Nelson Wittwer"]
-  spec.email         = ["nelson.wittwer@nuvi.com"]
+# Describe your gem and declare its dependencies:
+Gem::Specification.new do |s|
+  s.name        = "sneakers-rails"
+  s.version     = Sneakers::Rails::VERSION
+  s.authors     = ["Nelson Wittwer"]
+  s.email       = ["nelson.wittwer@nuvi.com"]
+  s.homepage    = "https://github.com/nuvi/sneakers-rails"
+  s.summary     = "Dynamically build $WORKERS environment variable from classes that include Sneakers::Worker"
+  s.description = "Dynamically build $WORKERS environment variable from classes that include Sneakers::Worker"
+  s.license     = "MIT"
 
-  spec.summary       = %q{Rails helper for loading sneakers workers.}
-  spec.description   = %q{Rails helper for loading sneakers workers.}
-  spec.homepage      = "https://github.com/nuvi/sneakers-rails"
-  spec.license       = "MIT"
+  s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
 
-  spec.files         = `git ls-files -z`.split("\x0").reject do |f|
-    f.match(%r{^(test|spec|features)/})
-  end
-  spec.bindir        = "exe"
-  spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
-  spec.require_paths = ["lib"]
+  s.add_dependency "rails", "~> 5.1.4"
+  s.add_dependency "sneakers", "~> 2.6"
 
-  spec.add_dependency "sneakers", "~> 2.6"
-
-  spec.add_development_dependency "bundler", "~> 1.15"
-  spec.add_development_dependency "rake", "~> 10.0"
-  spec.add_development_dependency "minitest", "~> 5.0"
+  s.add_development_dependency "pry-nav"
 end
